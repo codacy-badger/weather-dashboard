@@ -1,0 +1,75 @@
+:host {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  >div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding-top: 1em;
+  }
+}
+
+div.widget {
+  flex-grow: 1;
+  display: inline-block;
+  min-width: 340px;
+  max-width: 400px;
+  height: 210px;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 12px;
+  background: #222233;
+  background: radial-gradient(circle at 25% 15%, #005555, #222233);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 12px 10px -10px black;
+  border-bottom: 10px solid #555;
+  * {
+    color: #ddd;
+    margin: 0;
+  }
+  >.name {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 2px solid;
+    overflow: hidden;
+    font-variant-caps: unicase;
+    font-size: 1.5em;
+  }
+  >.description {
+    font-variant-caps: unicase;
+  }
+  >.temp {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding: inherit;
+    font-size: 5em;
+    letter-spacing: -.07em;
+    width: 100%;
+    >span.c {
+      position: relative;
+      top: -0.5em;
+      font-size: 60%;
+      left: .15em;
+    }
+    >span.icon {
+      position: absolute;
+      right: 10px;
+      padding: 0 10px;
+    }
+  }
+  >i.wi {
+    font-size: 5em;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+>p {
+  text-align: center;
+}

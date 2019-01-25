@@ -1,0 +1,111 @@
+div.input {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  >* {
+    margin: 0 5px;
+    border: 2px solid;
+    border-radius: 20px;
+    padding: 5px 10px;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    margin: 0 0 0 -20px;
+    cursor: pointer;
+    background-color: #22ff88;
+    transition: all .2s;
+    letter-spacing: 1px;
+    font-weight: bold;
+    &:disabled {
+      background-color: #ddd;
+      border-color: #888;
+      color: crimson;
+      letter-spacing: normal;
+      cursor: not-allowed;
+    }
+  }
+  input {
+    margin: 0 -20px 0 0;
+  }
+}
+
+ul {
+  text-align: center;
+  padding: 1em 0 0 0;
+  &.cities {
+    li {
+      display: inline;
+      border: 2px solid #333;
+      border-radius: 20px;
+      margin: 0 .5em;
+      padding: 2px;
+      background-color: #a6ffc4;
+      span {
+        margin: 2px 8px;
+        font-weight: bold;
+        &.delete {
+          height: 100%;
+          width: 100%;
+          border-radius: 5px;
+          transition: color .2s;
+          &:after {
+            position: relative;
+            content: "\d7";
+            font-size: 1.5em;
+            top: 3px;
+          }
+          &:hover {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}
+
+.feedbacks {
+  position: relative;
+  top: 1em;
+  min-height: 1em;
+  overflow: hidden;
+  padding: 0;
+  .loading {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    >div {
+      width: 10px;
+      height: 10px;
+      background-color: #333;
+      border-radius: 100%;
+      display: inline-block;
+      animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      &.bounce1 {
+        animation-delay: -0.32s;
+      }
+      &.bounce2 {
+        animation-delay: -0.16s;
+      }
+      @keyframes sk-bouncedelay {
+        0%,
+        80%,
+        100% {
+          transform: scale(0);
+        }
+        40% {
+          transform: scale(1.0);
+        }
+      }
+    }
+  }
+  .error {
+    text-align: center;
+    p {
+      font-weight: bold;
+      margin: 0;
+      display: inline-block;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<div *ngIf="(cities | async).length > 0; else addCity">
+  <div class="widget" *ngFor="let city of cities | async">
+    <h3 class="name">{{city.name}}</h3>
+    <p class="description">{{city.weather.description}}</p>
+    <div class="temp">{{city.weather.temperature | roundToOne}}<span class="c">°C</span>
+      <span class="icon">
+        <i class="wi wi-owm-{{city | dayOrNight}}-{{city.weather.id}}"></i>
+      </span>
+    </div>
+  </div>
+</div>
+
+<ng-template #addCity>
+  <div>
+    <p>Go to settings page to add a weather widget</p>
+  </div>
+</ng-template>

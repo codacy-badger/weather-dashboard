@@ -1,0 +1,34 @@
+<ul>
+  <li>
+    2992166 Montpellier
+  </li>
+  <li>
+    2643743 London
+  </li>
+  <li>
+    5128581 New York
+  </li>
+</ul>
+
+<div class="input">
+  <input (keyup.enter)="addCity(inputId.value)" (blur)="typing(inputId.value)" (paste)="typing(inputId.value)" (keyup)="typing(inputId.value)" maxlength="10" type="text" placeholder="City ID" #inputId appNumberMask>
+  <button (click)="addCity(inputId.value)" [attr.disabled]="!isSubmittable ? '' : null">Add city</button>
+</div>
+
+<div class="feedbacks ">
+  <div class="loading" *ngIf="(feedbacks | async)?.isApiCallPending">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+
+  <div class="error" *ngIf="((feedbacks | async)?.error)?.isError">
+    <p>ERROR: {{(((feedbacks | async)?.error)?.errorMessage) | capitalize}}</p>
+  </div>
+</div>
+
+<ul class="cities">
+  <li *ngFor="let city of cities | async">
+    <span>{{city.name}}</span><span class="delete" (click)="removeCity(city.cityId)"></span>
+  </li>
+</ul>
