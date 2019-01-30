@@ -5,10 +5,8 @@ module.exports = config => {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-min-reporter'),
       require('karma-mocha-reporter')
     ],
     client: {
@@ -18,6 +16,9 @@ module.exports = config => {
       dir: require('path').join(__dirname, '../coverage'),
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
+    },
+    mime: {
+      'text/x-typescript': ['ts', 'tsx']
     },
     reporters: ['mocha'],
     port: 9876,

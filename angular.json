@@ -78,11 +78,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "codeCoverage": false,
+            "codeCoverage": true,
             "codeCoverageExclude": [
-              "src/app/directives/**/*",
-              "src/app/actions/**/*",
-              "src/app/state/**/*"
+              "src/app/directives/number-mask.directive.ts"
             ],
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",

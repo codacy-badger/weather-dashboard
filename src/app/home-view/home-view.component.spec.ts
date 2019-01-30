@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
 
 import { DayOrNightPipe } from '../pipes/day-or-night.pipe';
@@ -10,7 +10,7 @@ describe('HomeViewComponent', () => {
   let component: HomeViewComponent;
   let fixture: ComponentFixture<HomeViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         HomeViewComponent,
@@ -19,11 +19,10 @@ describe('HomeViewComponent', () => {
       ],
       imports: [
         NgxsModule.forRoot([CityState])
-
       ]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeViewComponent);

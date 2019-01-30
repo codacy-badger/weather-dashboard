@@ -1,7 +1,8 @@
-import { NumberMaskDirective } from './number-mask.directive';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
+import { NumberMaskDirective } from './number-mask.directive';
 
 @Component({
   template: '<input type="text" appNumberMask>'

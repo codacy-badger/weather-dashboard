@@ -11,8 +11,8 @@
 </ul>
 
 <div class="input">
-  <input (keyup.enter)="addCity(inputId.value)" (blur)="typing(inputId.value)" (paste)="typing(inputId.value)" (keyup)="typing(inputId.value)" maxlength="10" type="text" placeholder="City ID" #inputId appNumberMask>
-  <button (click)="addCity(inputId.value)" [attr.disabled]="!isSubmittable ? '' : null">Add city</button>
+  <input (keyup.enter)="addCity(inputId.value)" (blur)="!isSubmittable(inputId.value)" (paste)="!isSubmittable(inputId.value)" (keyup)="!isSubmittable(inputId.value)" maxlength="10" type="text" placeholder="City ID" #inputId appNumberMask>
+  <button (click)="addCity(inputId.value)" [attr.disabled]="!isSubmittable(inputId.value) ? '' : null">Add city</button>
 </div>
 
 <div class="feedbacks ">

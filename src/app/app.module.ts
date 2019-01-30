@@ -40,9 +40,7 @@ import { CityState } from './state/state';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [
-    RestService
-  ],
+  providers: [RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

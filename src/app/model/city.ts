@@ -14,5 +14,4 @@ export interface City {
     sunrise: string,
     sunset: string
   };
-  isDayOrNight?: () => string;
 }

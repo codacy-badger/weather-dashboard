@@ -27,7 +27,7 @@ export interface FeedbacksModel {
 export class CityState {
 
   @Selector()
-  static getFeedbaks(state: FeedbacksModel): Feedback {
+  static getFeedbacks(state: FeedbacksModel): Feedback {
     return state.feedbacks;
   }
 
@@ -36,16 +36,10 @@ export class CityState {
     return state.cities;
   }
 
-  static isCityAlreadyPresent(state: CityStateModel) {
-    return (cityId: number) => {
-      return state.cities.filter(c => c.cityId === cityId).length > 0;
-    };
-  }
-
   @Action(AddCity)
   add({ getState, patchState }: StateContext<CityStateModel>, { payload }: AddCity) {
     const state = getState();
-    patchState({ cities: [...state.cities, state.cities.includes(payload) ? null : payload] });
+    patchState({ cities: [...state.cities, payload] });
   }
 
   @Action(RemoveCity)

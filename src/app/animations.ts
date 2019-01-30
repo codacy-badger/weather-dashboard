@@ -1,10 +1,4 @@
-import {
-  trigger,
-  animate,
-  transition,
-  style,
-  query
-} from '@angular/animations';
+import { animate, query, style, transition, trigger } from '@angular/animations';
 
 const animazione = '150ms 0ms ease';
 

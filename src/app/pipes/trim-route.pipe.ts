@@ -4,11 +4,9 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'trimRoute'
 })
 export class TrimRoutePipe implements PipeTransform {
-
   transform(value: string): any {
     return value
       ? value.substring(1)
       : null;
   }
-
 }

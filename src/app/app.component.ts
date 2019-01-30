@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
 import { Navigate, RouterState } from '@ngxs/router-plugin';
 import { Select, Store } from '@ngxs/store';
 
-import { fadeAnimation } from './animations';
 import { ClearErrors } from './actions/actions';
+import { fadeAnimation } from './animations';
 
 @Component({
   selector: 'app-root',

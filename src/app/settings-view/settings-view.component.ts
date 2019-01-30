@@ -1,12 +1,11 @@
 import { Observable } from 'rxjs';
 
 import { Component } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { Select } from '@ngxs/store';
 
-import { RemoveCity, UpdateFeedbacks } from '../actions/actions';
 import { City } from '../model/city';
 import { Feedback } from '../model/feedback';
-import { RestService } from '../services/rest.service';
+import { DataService } from '../services/data.service';
 import { CityState } from '../state/state';
 
 @Component({
@@ -16,41 +15,25 @@ import { CityState } from '../state/state';
 })
 export class SettingsViewComponent {
 
-  isSubmittable = false;
-
-  @Select(CityState.getFeedbaks) feedbacks: Observable<Feedback>;
+  @Select(CityState.getFeedbacks) feedbacks: Observable<Feedback>;
   @Select(CityState.getCities) cities: Observable<City[]>;
 
-  constructor(private store: Store, private restService: RestService) { }
+  constructor(private dataService: DataService) { }
 
-  addCity(id: string): void {
+  addCity(id: string | number): void {
+    const okInput = id.toString();
     document.getElementsByTagName('input')[0].value = null;
-    this.typing();
-    const userInput = parseInt(id.trim(), 10);
-    return this.isNewCity(userInput)
-      ? this.restService.getWeather(userInput)
+    const userInput = parseInt(okInput.trim(), 10);
+    return this.isSubmittable(okInput)
+      ? this.dataService.getCity(userInput)
       : null;
   }
 
-  removeCity(cityIdToRemove: any): void {
-    this.store.dispatch(new RemoveCity({
-      cityId: cityIdToRemove
-    }));
+  removeCity(cityId: number): Observable<any> {
+    return this.dataService.removeCity(cityId);
   }
 
-  typing(value?: string) {
-    this.isSubmittable = value !== undefined && value.length >= 6;
-  }
-
-  private isNewCity(userInput: number): boolean {
-    const currentCities = <City[]>this.store.selectSnapshot(store => store.state.cities);
-    const isNew = (currentCities.filter(c => c.cityId === userInput).length === 0);
-    if (!isNew) this.store.dispatch(new UpdateFeedbacks({
-      error: {
-        isError: true,
-        errorMessage: currentCities.filter(c => c.cityId === userInput)[0].name + ' is already present'
-      }
-    }));
-    return isNew;
+  isSubmittable(value?: string): boolean {
+    return value !== undefined && value.length >= 6;
   }
 }

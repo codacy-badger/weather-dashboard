@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Select } from '@ngxs/store';
 
 import { City } from '../model/city';
