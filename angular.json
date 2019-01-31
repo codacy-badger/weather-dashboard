@@ -65,6 +65,10 @@
           },
           "configurations": {
             "production": {
+              "optimization": true,
+              "sourceMap": false,
+              "aot": true,
+              "vendorChunk": false,
               "browserTarget": "weather-dashboard:build:production"
             }
           }

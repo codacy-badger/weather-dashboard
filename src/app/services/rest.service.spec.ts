@@ -9,9 +9,7 @@ import { CityState } from '../state/state';
 import { RestService } from './rest.service';
 
 describe('RestService', () => {
-
   let actual: Observable<any>;
-
   let service: RestService;
   let httpMock: HttpTestingController;
 
@@ -40,7 +38,7 @@ describe('RestService', () => {
   });
 
   it('should call the correct endpoint', () => {
-    const expectedEndpoint = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=2992166&units=metric&APPID=9a75971df07ea2b05cdc712c57819d18';
+    const expectedEndpoint = 'https://api.openweathermap.org/data/2.5/weather?id=2992166&units=metric&APPID=9a75971df07ea2b05cdc712c57819d18';
 
     actual = service.getCity(2992166);
     expect(actual).toBeTruthy();

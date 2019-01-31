@@ -2,14 +2,14 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
 
-import { CapitalizePipe } from '../pipes/capitalize.pipe';
-import { DataService } from '../services/data.service';
-import { CityState } from '../state/state';
-import { SettingsViewComponent } from './settings-view.component';
+import { CapitalizePipe } from '../../pipes/capitalize.pipe';
+import { DataService } from '../../services/data.service';
+import { CityState } from '../../state/state';
+import { SettingsComponent } from './settings.component';
 
-describe('SettingsViewComponent', () => {
-  let component: SettingsViewComponent;
-  let fixture: ComponentFixture<SettingsViewComponent>;
+describe('SettingsComponent', () => {
+  let component: SettingsComponent;
+  let fixture: ComponentFixture<SettingsComponent>;
   let injectedDataService: DataService;
 
   const montpellierId = 2992166;
@@ -17,7 +17,7 @@ describe('SettingsViewComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        SettingsViewComponent,
+        SettingsComponent,
         CapitalizePipe
       ],
       imports: [
@@ -29,7 +29,7 @@ describe('SettingsViewComponent', () => {
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SettingsViewComponent);
+    fixture = TestBed.createComponent(SettingsComponent);
     component = fixture.componentInstance;
     injectedDataService = TestBed.get(DataService);
     fixture.detectChanges();

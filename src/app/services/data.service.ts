@@ -15,8 +15,8 @@ export class DataService {
 
   constructor(private rest: RestService, private store: Store) { }
 
-  public getCity(cityId: number): void {
-    if (!this.isCityNew(cityId)) return;
+  public getCity(cityId: number): Observable<any> {
+    if (!this.isCityNew(cityId)) return this.dispatchCityAlreadyPresent();
     this.store.dispatch(new UpdateFeedbacks({ isApiCallPending: true }));
     this.rest.getCity(cityId)
       .subscribe(
@@ -56,11 +56,16 @@ export class DataService {
     }));
   }
 
-  private mapErrorToStore(error: any): Observable<any> {
+
+  private mapErrorToStore(error: any): Observable<UpdateFeedbacks> {
     return this.store.dispatch(new UpdateFeedbacks({ error: { isError: true, errorMessage: error.error.message } }));
   }
 
-  private clearErrors(): Observable<any> {
+  private dispatchCityAlreadyPresent(): Observable<UpdateFeedbacks> {
+    return this.store.dispatch(new UpdateFeedbacks({error: {isError: true, errorMessage: 'City is already present!'}}));
+  }
+
+  private clearErrors(): Observable<ClearErrors> {
     return this.store.dispatch(new ClearErrors());
   }
 }

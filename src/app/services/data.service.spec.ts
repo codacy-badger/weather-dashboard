@@ -12,8 +12,7 @@ import { DataService } from './data.service';
 import { RestService } from './rest.service';
 
 describe('DataService', () => {
-  const fakeOkResponse =
-    { "coord": { "lon": 3.88, "lat": 43.61 }, "weather": [{ "id": 800, "main": "Clear", "description": "clear sky", "icon": "01n" }], "base": "stations", "main": { "temp": 5.62, "pressure": 1010, "humidity": 39, "temp_min": 4, "temp_max": 7 }, "visibility": 10000, "wind": { "speed": 4.1, "deg": 320 }, "clouds": { "all": 0 }, "dt": 1548709200, "sys": { "type": 1, "id": 6518, "message": 0.004, "country": "FR", "sunrise": 1548659076, "sunset": 1548694257 }, "id": 2992166, "name": "Montpellier", "cod": 200 };
+  const fakeOkResponse = { 'coord': { 'lon': 3.88, 'lat': 43.61 }, 'weather': [{ 'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n' }], 'base': 'stations', 'main': { 'temp': 5.62, 'pressure': 1010, 'humidity': 39, 'temp_min': 4, 'temp_max': 7 }, 'visibility': 10000, 'wind': { 'speed': 4.1, 'deg': 320 }, 'clouds': { 'all': 0 }, 'dt': 1548709200, 'sys': { 'type': 1, 'id': 6518, 'message': 0.004, 'country': 'FR', 'sunrise': 1548659076, 'sunset': 1548694257 }, 'id': 2992166, 'name': 'Montpellier', 'cod': 200 };
   const testCityId = 2992166;
 
   let service: DataService;
@@ -60,11 +59,15 @@ describe('DataService', () => {
 
   it('should not double fetch', () => {
     const restSpy = spyOn(injectedRest, 'getCity').and.returnValue(of(fakeOkResponse));
-    service.getCity(2992166);
-    expect(restSpy).toHaveBeenCalledTimes(1);
+    const storeSpy = spyOn(injectedStore, 'dispatch').and.callThrough();
 
     service.getCity(2992166);
     expect(restSpy).toHaveBeenCalledTimes(1);
+    expect(storeSpy).toHaveBeenCalledTimes(3);
+
+    service.getCity(2992166);
+    expect(restSpy).toHaveBeenCalledTimes(1);
+    expect(storeSpy).toHaveBeenCalledTimes(4);
   });
 
   it('should dispatch error to store', () => {

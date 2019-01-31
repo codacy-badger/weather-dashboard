@@ -25,5 +25,3 @@ export class AppComponent {
     this.store.dispatch(new Navigate(['/' + where]));
   }
 }
-
-

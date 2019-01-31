@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeViewComponent } from './home-view/home-view.component';
-import { SettingsViewComponent } from './settings-view/settings-view.component';
+import { HomeComponent } from './components/home/home.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
-export const routes: Routes = [
+const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeViewComponent },
-  { path: 'settings', component: SettingsViewComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'settings', component: SettingsComponent },
 ];
 
 @NgModule({

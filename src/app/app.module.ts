@@ -7,23 +7,24 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule } from '@ngxs/store';
 
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import { NumberMaskDirective } from './directives/number-mask.directive';
-import { HomeViewComponent } from './home-view/home-view.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { DayOrNightPipe } from './pipes/day-or-night.pipe';
 import { RoundToOnePipe } from './pipes/round-to-one.pipe';
 import { TrimRoutePipe } from './pipes/trim-route.pipe';
 import { RestService } from './services/rest.service';
-import { SettingsViewComponent } from './settings-view/settings-view.component';
 import { CityState } from './state/state';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeViewComponent,
-    SettingsViewComponent,
+    HomeComponent,
+    SettingsComponent,
     NumberMaskDirective,
     RoundToOnePipe,
     TrimRoutePipe,
@@ -34,8 +35,8 @@ import { CityState } from './state/state';
     BrowserModule,
     BrowserAnimationsModule,
     NgxsModule.forRoot([CityState]),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot({disabled: environment.production}),
+    NgxsLoggerPluginModule.forRoot({disabled: environment.production}),
     NgxsRouterPluginModule.forRoot(),
     AppRoutingModule,
     HttpClientModule

@@ -15,7 +15,6 @@ describe('NumberMaskDirective', () => {
   let inputEl: any;
   // Behaviour of this directive must be tested in E2E due to Chromium inconsistencies with programmatically generated keyboard events
 
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestDirectiveComponent, NumberMaskDirective]

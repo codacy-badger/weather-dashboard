@@ -3,24 +3,24 @@ import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { Select } from '@ngxs/store';
 
-import { City } from '../model/city';
-import { Feedback } from '../model/feedback';
-import { DataService } from '../services/data.service';
-import { CityState } from '../state/state';
+import { City } from '../../model/city';
+import { Feedback } from '../../model/feedback';
+import { DataService } from '../../services/data.service';
+import { CityState } from '../../state/state';
 
 @Component({
-  selector: 'app-settings-view',
-  templateUrl: './settings-view.component.html',
-  styleUrls: ['./settings-view.component.scss']
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss']
 })
-export class SettingsViewComponent {
+export class SettingsComponent {
 
   @Select(CityState.getFeedbacks) feedbacks: Observable<Feedback>;
   @Select(CityState.getCities) cities: Observable<City[]>;
 
   constructor(private dataService: DataService) { }
 
-  addCity(id: string | number): void {
+  addCity(id: string | number): Observable<any> {
     const okInput = id.toString();
     document.getElementsByTagName('input')[0].value = null;
     const userInput = parseInt(okInput.trim(), 10);
