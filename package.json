@@ -6,8 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test-ci": "ng test --watch false --progress false",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-prod": "ng build --prod --base-href https://thatsnotnice.github.io/weather-dashboard/ --progress false",
+    "publish": "npx ngh --repo=https://GH_TOKEN@github.com/thatsnotnice/weather-dashboard.git --dir=dist/weather-dashboard"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +32,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.12.0",
-    "@angular/cli": "~7.2.2",
+    "@angular/cli": "^7.2.4",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
     "@ngxs/devtools-plugin": "^3.3.4",
@@ -37,6 +40,7 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "angular-cli-ghpages": "^0.5.3",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",

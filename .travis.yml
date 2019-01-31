@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "10"
+dist: trusty
+sudo: required
+
+script:
+  - npm run test-ci
+  - npm run build-prod
+  - npm run publish
